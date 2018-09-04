@@ -11,9 +11,7 @@ import java.security.InvalidKeyException;
 public class WebConfiguration {
 
     private static final String storageConnectionString =
-            "DefaultEndpointsProtocol=http;" +
-                    "AccountName=neoteststorage;" +
-                    "AccountKey=";
+            "";
 
     @Bean
     public CloudStorageAccount cloudStorageAccount() {

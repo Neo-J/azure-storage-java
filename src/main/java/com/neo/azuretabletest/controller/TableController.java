@@ -3,6 +3,9 @@ package com.neo.azuretabletest.controller;
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.table.CloudTable;
 import com.microsoft.azure.storage.table.CloudTableClient;
+import com.neo.azuretabletest.constant.ErrCodeConstant;
+import com.neo.azuretabletest.entity.ResultEntity;
+import com.neo.azuretabletest.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +20,7 @@ public class TableController {
     private CloudStorageAccount cloudStorageAccount;
 
     @PostMapping("/{name}")
-    public String create(@PathVariable String name) {
+    public ResultEntity create(@PathVariable String name) {
         try
         {
             // Create the table client.
@@ -26,18 +29,18 @@ public class TableController {
             // Create the table if it doesn't exist.
             CloudTable cloudTable = tableClient.getTableReference(name);
             cloudTable.createIfNotExists();
-            return "table " + name + " created.";
+            return ResultUtil.success();
         }
         catch (Exception e)
         {
             // Output the stack trace.
             e.printStackTrace();
-            return "create failed";
+            return ResultUtil.error(ErrCodeConstant.TABLE_CREATE_FAILURE, "table create failed");
         }
     }
 
     @GetMapping("")
-    public List<String> list() {
+    public ResultEntity list() {
         try
         {
             // Create the table client.
@@ -49,33 +52,33 @@ public class TableController {
             {
                 tableList.add(table);
             }
-            return tableList;
+            return ResultUtil.success(tableList);
         }
         catch (Exception e)
         {
             // Output the stack trace.
             e.printStackTrace();
-            return null;
+            return ResultUtil.error(ErrCodeConstant.TABLE_LIST_FAILURE, "table list failed");
         }
     }
 
     @DeleteMapping("/{name}")
-    public String delete(@PathVariable String name) {
+    public ResultEntity delete(@PathVariable String name) {
         try
         {
             // Create the table client.
             CloudTableClient tableClient = cloudStorageAccount.createCloudTableClient();
 
-            // Create the table if it doesn't exist.
+            // del the table if it doesn't exist.
             CloudTable cloudTable = tableClient.getTableReference(name);
             cloudTable.deleteIfExists();
-            return "table " + name + " deleted.";
+            return ResultUtil.success();
         }
         catch (Exception e)
         {
             // Output the stack trace.
             e.printStackTrace();
-            return "delete failed";
+            return ResultUtil.error(ErrCodeConstant.TABLE_DELETE_FAILURE, "table delete failed");
         }
     }
 }

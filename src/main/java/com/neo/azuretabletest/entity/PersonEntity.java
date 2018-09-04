@@ -2,21 +2,21 @@ package com.neo.azuretabletest.entity;
 
 import com.microsoft.azure.storage.table.TableServiceEntity;
 
-public class PeopleEntity extends TableServiceEntity {
+public class PersonEntity extends TableServiceEntity {
 
-    public PeopleEntity(String age, String email, String phoneNumber, String name) {
+    public PersonEntity(String age, String email, String phoneNumber, String name) {
         this.partitionKey = age;
         this.rowKey = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
-    public PeopleEntity(String age, String name) {
+    public PersonEntity(String age, String name) {
         this.partitionKey = age;
         this.rowKey = name;
     }
 
-    public PeopleEntity() {
+    public PersonEntity() {
     }
 
     private String email;

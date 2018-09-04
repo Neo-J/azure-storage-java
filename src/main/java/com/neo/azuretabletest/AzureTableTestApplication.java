@@ -1,14 +1,8 @@
 package com.neo.azuretabletest;
 
-import com.microsoft.azure.storage.CloudStorageAccount;
-import com.neo.azuretabletest.entity.PeopleEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.net.URISyntaxException;
-import java.security.InvalidKeyException;
 
 @SpringBootApplication
 @Configuration
