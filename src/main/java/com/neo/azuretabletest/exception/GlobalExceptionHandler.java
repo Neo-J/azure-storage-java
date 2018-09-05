@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(value = TableNotExistException.class)
+    @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ErrorInfo<String> jsonErrorHandler(HttpServletRequest req, TableNotExistException e) throws Exception {
+    public ErrorInfo<String> jsonErrorHandler(HttpServletRequest req, Exception e) throws Exception {
         ErrorInfo<String> r = new ErrorInfo<>();
         r.setMessage(e.getMessage());
         r.setCode(ErrorInfo.ERROR);

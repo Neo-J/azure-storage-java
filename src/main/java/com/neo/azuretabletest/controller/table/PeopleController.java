@@ -1,4 +1,4 @@
-package com.neo.azuretabletest.controller;
+package com.neo.azuretabletest.controller.table;
 
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.StorageException;

@@ -10,8 +10,7 @@ import java.security.InvalidKeyException;
 @Configuration
 public class WebConfiguration {
 
-    private static final String storageConnectionString =
-            "";
+    private static final String storageConnectionString = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
     @Bean
     public CloudStorageAccount cloudStorageAccount() {
@@ -23,6 +22,5 @@ public class WebConfiguration {
             return null;
         }
     }
-
 
 }

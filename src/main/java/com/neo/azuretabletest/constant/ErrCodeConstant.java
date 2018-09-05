@@ -23,4 +23,6 @@ public class ErrCodeConstant {
 
     public final static int PEOPLE_EMAILS_GET_FAILURE = 2005;
 
+    public final static int CONTAINER_LIST_FAILURE = 3001;
+
 }
